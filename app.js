@@ -32,6 +32,12 @@ db.connect((error)=>{
 app.get('/', (req, res)=>{
     res.render("index");
 })
+app.get('/admin', (req, res)=>{
+    res.render("adminLogin");
+})
+app.get('/adminRegister', (req, res)=>{
+    res.render("adminRegister");
+})
 
 app.listen(5000, ()=>{
     console.log("Server Started on port 5000");
