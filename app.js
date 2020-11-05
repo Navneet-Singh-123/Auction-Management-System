@@ -18,6 +18,11 @@ const publicDirectory = path.join(__dirname, './public');
 
 app.use(express.static(publicDirectory));
 
+// Parsing URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({extended: false}));
+// Parsing JSON bodies (as sent by API clients)
+app.use(express.json());
+
 app.set('view engine', 'hbs');
 
 db.connect((error)=>{
@@ -29,15 +34,9 @@ db.connect((error)=>{
     }
 })
 
-app.get('/', (req, res)=>{
-    res.render("index");
-})
-app.get('/admin', (req, res)=>{
-    res.render("adminLogin");
-})
-app.get('/adminRegister', (req, res)=>{
-    res.render("adminRegister");
-})
+// Define Routes
+app.use('/', require('./routes/pages'))
+app.use('/auth/admin', require('./routes/AuthAdmin'))
 
 app.listen(5000, ()=>{
     console.log("Server Started on port 5000");

@@ -21,11 +21,15 @@ nav li a{
     text-decoration: none;
     font-weight: bold;
     padding: 5px 8px;
+    transition: 0.3s;
+
 }
 
 nav li a:hover{
     color: #2A5B97;
     text-decoration: none;
+    transition: 0.3s;
+
 }
 
 .mybtn{
@@ -38,10 +42,13 @@ nav li a:hover{
     text-align: center;
     font-weight: bold;
     display: block; 
+    transition: 0.3s;
 }
 
 .mybtn:hover{
     background-color:#2A5B97;
     color: white;
     text-decoration: none;
+    transition: 0.3s;
+
 }
