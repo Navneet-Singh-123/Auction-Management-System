@@ -21,10 +21,10 @@
             Login Form
         </div>
         <div class="card-body">
-            <form>
+            <form action="/auth/admin/login" method="POST">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name"> 
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email"> 
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -39,6 +39,9 @@
             <a href="/adminRegister" class="mybtn" style="width: 100%; margin: 0 0;">Signup</a>
         </div>
         </div>
+        {{#if message}}
+            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
     </div>
 
 
