@@ -1,6 +1,8 @@
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const {promisify} = require('util'); 
+const { decode } = require('punycode');
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST, 
@@ -94,5 +96,38 @@ exports.login = async (req, res)=>{
         })
     }catch(error){
         console.log(error);
+    }
+}
+
+exports.isLoggedIn = async (req, res, next)=>{
+    // console.log(req.cookies);
+    if(req.cookies.jwt){
+        try{
+            // Verify the token
+            const decoded = await promisify(jwt.verify)(
+                req.cookies.jwt, 
+                process.env.JWT_SECRET
+            )
+
+            // Check if the user still exists
+            db.query("SELECT * FROM admin WHERE id = ?", [decoded.id], (error, result)=>{
+                console.log(result);
+
+                if(!result){
+                    return next();
+                }
+
+                req.user = result[0];
+
+                return next();
+            })
+
+        }catch(err){
+            console.log(err);
+            return next();
+        }
+    }
+    else{
+        next();
     }
 }

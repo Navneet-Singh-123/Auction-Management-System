@@ -11,18 +11,25 @@
     <nav>
         <h4>Auction Management System</h4>
         <ul>
+            <li class="adminDashName">Welcome {{user.name}}</li>
+            <li><a href="/auth/admin/logout">Logout</a></li>
             <li><a href="/">Home</a></li>
         </ul>
     </nav>
 
     <div class="container mt-4">
-        {{#if user}}
-            <a href="/adminDash" class="mybtn">Admin</a>
-            <a href="/userDash" class="mybtn">User</a>
-        {{else}}
-            <a href="/admin" class="mybtn">Admin</a>
-            <a href="/user" class="mybtn">User</a>
-        {{/if}}
+
+        <div class="row">
+            <div class="col-4">
+                <a href="" class="mybtn">Register Seller</a>
+            </div>
+            <div class="col-4">
+                <a href=""  class="mybtn">Register Buyer</a>
+            </div>
+            <div class="col-4">
+                <a href="" class="mybtn">Show All Admins</a>
+            </div>
+        </div>
     </div>
 
 

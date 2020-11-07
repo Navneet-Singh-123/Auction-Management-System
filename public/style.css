@@ -43,6 +43,7 @@ nav li a:hover{
     font-weight: bold;
     display: block; 
     transition: 0.3s;
+    border-radius: 5px;
 }
 
 .mybtn:hover{
@@ -51,4 +52,11 @@ nav li a:hover{
     text-decoration: none;
     transition: 0.3s;
 
+}
+
+.adminDashName{
+    font-weight: bold;
+    color: white;
+    padding-top: 3px;
+    padding-right: 10px;
 }
