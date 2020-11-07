@@ -6,4 +6,6 @@ router.post('/register', adminAuthController.register)
 
 router.post('/login', adminAuthController.login);
 
+router.get('/logout', adminAuthController.logout);
+
 module.exports = router;

@@ -24,12 +24,12 @@ exports.register = (req, res)=>{
 
         if(result.length > 0){
             return res.render("adminRegister", {
-                message: "That email is already in use"
+                message: "That email is already in use", 
             })
         }   
         else if(password !== passwordConfirm){
             return res.render("adminRegister", {
-                message: "Passwords do not Match"
+                message: "Passwords do not Match", 
             })
         }
 
@@ -48,7 +48,7 @@ exports.register = (req, res)=>{
             else{
                 console.log(result);
                 return res.render('adminRegister', {
-                    message: "User Registered"
+                    messageSuccess: "User Registered", 
                 })
             }
         })
@@ -130,4 +130,12 @@ exports.isLoggedIn = async (req, res, next)=>{
     else{
         next();
     }
+}
+
+exports.logout = async (req, res)=>{
+    res.cookie('jwt', 'logout', {
+        expires: new Date(Date.now() + 2000), 
+        httpOnly: true
+    })
+    res.status(200).redirect('/');
 }
