@@ -52,3 +52,44 @@ exports.registerSupplier = (req, res)=>{
         })
     })
 }
+
+
+exports.registerBuyer = (req, res)=>{
+
+    const {name, mobile, password, passwordConfirm, email} = req.body;
+
+    db.query("SELECT email FROM buyer WHERE email = ?", [email], async (error, result)=>{
+        if(error){
+            console.log(error);
+        }
+        if(result.length > 0){
+            return res.render("buyerRegister", {
+                message: "A Buyer with this email already exist", 
+            })
+        } 
+        else if(password !== passwordConfirm){
+            return res.render("buyerRegister", {
+                message: "Passwords do not Match", 
+            })
+        }
+
+        let hashedPassword = await bcrypt.hash(password, 8);
+
+        db.query('INSERT INTO buyer SET ?', {
+            name: name, 
+            mobile: mobile, 
+            email: email, 
+            password: hashedPassword
+        }, (error, result)=>{
+            if(error){
+                console.log(error);
+            }
+            else{
+                console.log(result);
+                return res.render('buyerRegister', {
+                    messageSuccess: "Buyer Registered", 
+                })
+            }
+        })
+    })
+}

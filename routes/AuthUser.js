@@ -7,5 +7,7 @@ router.post('/login', userAuthController.login);
 
 router.post('/supplier/register', userAuthController.registerSupplier);
 
+router.post('/buyer/register', userAuthController.registerBuyer);
+
 
 module.exports = router;

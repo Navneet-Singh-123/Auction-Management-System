@@ -36,4 +36,8 @@ router.get('/supplierRegister', (req, res)=>{
     res.render("supplierRegister")
 })
 
+router.get('/buyerRegister', (req, res)=>{
+    res.render("buyerRegister");
+})
+
 module.exports = router;
