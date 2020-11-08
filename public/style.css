@@ -57,6 +57,21 @@ nav li a:hover{
 .adminDashName{
     font-weight: bold;
     color: white;
-    padding-top: 3px;
     padding-right: 10px;
+}
+
+.admin_list{
+    margin: 50px;
+    text-align: center;
+}
+
+.admin_list_head{
+    background-color:#2A5B97;
+    color: white;
+    font-weight: bold;
+}
+
+.admin_list_item{
+    color: #2A5B97;
+    font-weight: bold;
 }

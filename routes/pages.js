@@ -8,9 +8,11 @@ router.get('/', authAdminController.isLoggedIn, (req, res)=>{
         user: req.user
     });
 })
+
 router.get('/admin', (req, res)=>{
     res.render("adminLogin");
 })
+
 router.get('/adminRegister', (req, res)=>{
     res.render("adminRegister");
 })
@@ -24,6 +26,10 @@ router.get('/adminDash', authAdminController.isLoggedIn, (req, res)=>{
     else{
         res.render('adminLogin');
     }
+})
+
+router.get('/user', (req, res)=>{
+    res.render("userLogin");
 })
 
 module.exports = router;

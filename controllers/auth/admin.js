@@ -2,7 +2,6 @@ const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const {promisify} = require('util'); 
-const { decode } = require('punycode');
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST, 
