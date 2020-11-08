@@ -32,4 +32,8 @@ router.get('/user', (req, res)=>{
     res.render("userLogin");
 })
 
+router.get('/supplierRegister', (req, res)=>{
+    res.render("supplierRegister")
+})
+
 module.exports = router;

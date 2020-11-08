@@ -11,8 +11,7 @@ const db = mysql.createConnection({
 });
 
 exports.register = (req, res)=>{
-    console.log(req.body);
-
+    
     const {name, mobile, password, passwordConfirm, email} = req.body;
 
     db.query('SELECT email FROM admin WHERE email = ?', [email], async (error, result)=>{
