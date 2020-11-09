@@ -75,3 +75,11 @@ nav li a:hover{
     color: #2A5B97;
     font-weight: bold;
 }
+
+.admin_err{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #2A5B97;
+    padding-top: 30px;
+}

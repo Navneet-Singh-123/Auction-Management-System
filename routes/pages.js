@@ -3,9 +3,17 @@ const authAdminController = require('../controllers/auth/admin');
 
 const router = express.Router();
 
+router.get('/option', (req, res)=>{
+    res.render("userOption");
+})
+
+router.get('/adminErr', (req, res)=>{
+    res.render("adminErr");
+})
+
 router.get('/', authAdminController.isLoggedIn, (req, res)=>{
     res.render("index", {
-        user: req.user
+        admin: req.adminLogin
     });
 })
 
@@ -18,9 +26,9 @@ router.get('/adminRegister', (req, res)=>{
 })
 
 router.get('/adminDash', authAdminController.isLoggedIn, (req, res)=>{
-    if(req.user){
+    if(req.adminLogin){
         res.render('adminDash', {
-            user: req.user
+            admin: req.adminLogin
         });
     }
     else{
@@ -39,5 +47,7 @@ router.get('/supplierRegister', (req, res)=>{
 router.get('/buyerRegister', (req, res)=>{
     res.render("buyerRegister");
 })
+
+
 
 module.exports = router;

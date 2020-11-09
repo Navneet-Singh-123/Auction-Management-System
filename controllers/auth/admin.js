@@ -111,11 +111,15 @@ exports.isLoggedIn = async (req, res, next)=>{
             db.query("SELECT * FROM admin WHERE id = ?", [decoded.id], (error, result)=>{
                 console.log(result);
 
+                if(error){
+                    console.log(error);
+                }
+
                 if(!result){
                     return next();
                 }
 
-                req.user = result[0];
+                req.adminLogin = result[0];
 
                 return next();
             })
