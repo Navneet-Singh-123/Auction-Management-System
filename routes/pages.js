@@ -1,10 +1,11 @@
 const express = require('express');
 const authAdminController = require('../controllers/auth/admin');
+const authUserController = require('../controllers/auth/user');
 
 const router = express.Router();
 
-router.get('/option', (req, res)=>{
-    res.render("userOption");
+router.get('/userOptions', (req, res)=>{
+    res.render('userOption');
 })
 
 router.get('/adminErr', (req, res)=>{
@@ -46,6 +47,21 @@ router.get('/supplierRegister', (req, res)=>{
 
 router.get('/buyerRegister', (req, res)=>{
     res.render("buyerRegister");
+})
+
+router.get("/supplierLogin", authUserController.isSupplierLoggedIn, (req, res)=>{
+    if(req.supplierLogin){
+        res.render('supplierDash', {
+            supplier: req.supplierLogin
+        });
+    }
+    else{
+        res.render('supplierLogin');
+    }
+})
+
+router.get("/buyerLogin", (req, res)=>{
+    res.render("buyerLogin");
 })
 
 

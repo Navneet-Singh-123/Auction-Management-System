@@ -9,5 +9,9 @@ router.post('/supplier/register', userAuthController.registerSupplier);
 
 router.post('/buyer/register', userAuthController.registerBuyer);
 
+router.post('/supplier/login', userAuthController.supplierLogin);
+
+router.get('/supplier/logout', userAuthController.supplierLogout);
+
 
 module.exports = router;

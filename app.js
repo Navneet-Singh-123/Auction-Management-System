@@ -37,10 +37,11 @@ db.connect((error)=>{
 })
 
 // Define Routes
-app.use('/admin', require('./routes/Admin'))
-app.use('/user', require('./routes/pages'))
+
 app.use('/auth/admin', require('./routes/AuthAdmin'))
 app.use('/auth/user', require('./routes/AuthUser'))
+app.use('/admin', require('./routes/Admin'))
+app.use('/user', require('./routes/User'))
 app.use('/', require('./routes/pages'))
 
 app.listen(5000, ()=>{
