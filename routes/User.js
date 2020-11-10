@@ -10,4 +10,6 @@ router.post('/supplier/addProduct', userController.addProduct);
 
 router.get('/supplier/all', userController.getAllSuppliers);
 
+router.get('/product/all', userController.getAllProducts);
+
 module.exports = router;

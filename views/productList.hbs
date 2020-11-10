@@ -11,27 +11,19 @@
     <nav>
         <h4>Auction Management System</h4>
         <ul>
-            <li class="adminDashName">Welcome {{supplier.name}}</li>
             <li><a href="/">Home</a></li>
-            <li><a href="/auth/user/supplier/logout">Logout</a></li>
-            <li><a href="/userOptions">Back</a></li>
+            <li><a href="/supplierLogin">Dashboard</a></li>
         </ul>
     </nav>
 
-    <div class="container mt-4">    
-        <div class="row">
-            <div class="col-4">
-                <a href="/addProduct" class="mybtn">Add Product</a>
-            </div>
-            <div class="col-4">
-                <a href="/user/product/all" class="mybtn">Show All Products</a>
-            </div>
-            <div class="col-4">
-                <a href="/user/supplier/all" class="mybtn">Show All Suppliers</a>
-            </div>
-        </div>
+    <div class="container">
+        <ul class="list-group admin_list">
+            <li class="list-group-item admin_list_head">List of All the Products</li>
+            {{#each products}}
+            <li class="list-group-item admin_list_item">{{this.name}}</li>
+            {{/each}}
+        </ul>
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>

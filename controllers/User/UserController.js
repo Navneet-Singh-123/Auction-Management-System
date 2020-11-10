@@ -21,6 +21,18 @@ exports.getAllSuppliers = (req, res)=>{
     })
 }
 
+exports.getAllProducts = (req, res)=>{
+    db.query('SELECT * FROM product', (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        // console.log(results);
+        return res.render("productList", {
+            products: results
+        });
+    })
+}
+
 exports.addProduct = async (req, res)=>{
 
     const {name, basePrice} = req.body;
