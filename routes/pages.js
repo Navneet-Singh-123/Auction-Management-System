@@ -64,6 +64,10 @@ router.get("/buyerLogin", (req, res)=>{
     res.render("buyerLogin");
 })
 
+router.get('/addProduct', (req, res)=>{
+    res.render('addProduct');
+})
+
 
 
 module.exports = router;

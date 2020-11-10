@@ -111,15 +111,18 @@ exports.supplierLogin = async (req, res)=>{
 
             if(error){
                 console.log(error);
+                res.status(422).render("supplierLogin", {
+                    message: "Something went wrong. Please try Again"
+                })
             }
 
-            if(results.length == 0){
+            else if(results.length == 0){
                 res.status(401).render("supplierLogin", {
                     message: "A Supplier with this Email does not exist. Please Register yourself by the Admin."
                 })
             }
 
-            if(!results || !(await bcrypt.compare(password, results[0].password)) ){
+            else if(!results || !(await bcrypt.compare(password, results[0].password)) ){
                 res.status(401).render("supplierLogin", {
                     message: "Email or Password is incorrect"
                 })
