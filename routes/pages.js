@@ -60,8 +60,15 @@ router.get("/supplierLogin", authUserController.isSupplierLoggedIn, (req, res)=>
     }
 })
 
-router.get("/buyerLogin", (req, res)=>{
-    res.render("buyerLogin");
+router.get("/buyerLogin", authUserController.isBuyerLoggedIn, (req, res)=>{
+    if(req.buyerLogin){
+        res.render("buyerDash", {
+            buyer: req.buyerLogin
+        })
+    }
+    else{
+        res.render("buyerLogin");
+    }
 })
 
 router.get('/addProduct', (req, res)=>{
