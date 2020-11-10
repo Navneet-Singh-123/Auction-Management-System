@@ -8,4 +8,6 @@ router.get('/all', adminController.getAllAdmins);
 
 router.post('/supplier/addProduct', userController.addProduct);
 
+router.get('/supplier/all', userController.getAllSuppliers);
+
 module.exports = router;

@@ -9,6 +9,18 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+exports.getAllSuppliers = (req, res)=>{
+    db.query('SELECT * FROM supplier', (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        // console.log(results);
+        return res.render("supplierList", {
+            suppliers: results
+        });
+    })
+}
+
 exports.addProduct = async (req, res)=>{
 
     const {name, basePrice} = req.body;
