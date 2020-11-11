@@ -1,6 +1,7 @@
 const express = require('express');
 const authAdminController = require('../controllers/auth/admin');
 const authUserController = require('../controllers/auth/user');
+const adminController = require('../controllers/Admin/AdminController');
 
 const router = express.Router();
 
@@ -74,6 +75,10 @@ router.get("/buyerLogin", authUserController.isBuyerLoggedIn, (req, res)=>{
 router.get('/addProduct', (req, res)=>{
     res.render('addProduct');
 })
+
+router.get("/selectProductList", adminController.getProductsForBid);
+
+router.get("/soldProductList", adminController.getSoldProducts);
 
 
 

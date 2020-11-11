@@ -17,3 +17,26 @@ exports.getAllAdmins = (req, res)=>{
         });
     })
 }
+
+exports.getProductsForBid = (req, res) => {
+    db.query("SELECT * from product WHERE status = 1", (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        return res.render("availableProducts", {
+            products: results
+        });
+    })
+}
+
+
+exports.getSoldProducts = (req, res) => {
+    db.query("SELECT * from product WHERE status = 0", (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        return res.render("soldProducts", {
+            products: results
+        });
+    })
+}

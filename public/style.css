@@ -76,6 +76,11 @@ nav li a:hover{
     font-weight: bold;
 }
 
+.list_item_selection{
+    color: #2A5B97;
+    font-weight: bold;
+}
+
 .admin_err{
     text-align: center;
     font-size: 40px;
