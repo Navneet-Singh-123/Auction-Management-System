@@ -35,7 +35,7 @@ exports.getAllProducts = (req, res)=>{
 
 exports.addProduct = async (req, res)=>{
 
-    const {name, basePrice} = req.body;
+    const {name, basePrice, detail} = req.body;
 
     const decoded = await promisify(jwt.verify)(
         req.cookies.jwt_supplier, 
@@ -46,6 +46,7 @@ exports.addProduct = async (req, res)=>{
      
     product.name = name;
     product.basePrice = basePrice;
+    product.detail = detail;
 
     db.query("SELECT * FROM supplier WHERE id = ?", [decoded.id], (error, result)=>{
         console.log(result);
@@ -64,7 +65,8 @@ exports.addProduct = async (req, res)=>{
         db.query('INSERT INTO product SET ?', {
             name: product.name, 
             owner: product.owner, 
-            basePrice: product.basePrice
+            basePrice: product.basePrice, 
+            detail: product.detail
         }, (error, result)=>{
             if(error){
                 console.log(error);

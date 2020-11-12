@@ -105,3 +105,21 @@ nav li a:hover{
     margin-right: 20px;
     text-align: center;
 }
+
+.product_btn{
+    font-weight: bold;
+}
+
+.details_heading{
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: 3.5em;
+    color: #2A5B97;
+    font-weight: bold;
+}
+
+.product_details{
+    font-size: 1.4em;
+    color: #40B6BD;
+}

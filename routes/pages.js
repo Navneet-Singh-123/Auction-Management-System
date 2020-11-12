@@ -13,6 +13,18 @@ const db = mysql.createConnection({
 
 const router = express.Router();
 
+router.get('/productDetails', (req, res)=>{
+    const id = req.cookies.pid;
+    db.query("SELECT * FROM product WHERE id = ?", [id], (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        res.render("productDetails", {
+            product: results[0]
+        })
+    })
+})
+
 router.get('/userOptions', (req, res)=>{
     res.render('userOption');
 })
