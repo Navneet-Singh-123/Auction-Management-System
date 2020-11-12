@@ -12,4 +12,6 @@ router.get('/supplier/all', userController.getAllSuppliers);
 
 router.get('/product/all', userController.getAllProducts);
 
+router.get("/buyer/all", userController.getAllBuyers);
+
 module.exports = router;

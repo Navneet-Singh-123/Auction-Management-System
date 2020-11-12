@@ -20,6 +20,17 @@ exports.getAllSuppliers = (req, res)=>{
         });
     })
 }
+exports.getAllBuyers = (req, res)=>{
+    db.query('SELECT * FROM buyer', (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        // console.log(results);
+        return res.render("buyerList", {
+            buyers: results
+        });
+    })
+}
 
 exports.getAllProducts = (req, res)=>{
     db.query('SELECT * FROM product', (error, results)=>{

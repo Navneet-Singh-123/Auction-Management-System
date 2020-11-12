@@ -11,18 +11,18 @@
     <nav>
         <h4>Auction Management System</h4>
         <ul>
-            <li class="adminDashName">Welcome {{buyer.name}}</li>
             <li><a href="/">Home</a></li>
-            <li><a href="/auth/user/buyer/logout">Logout</a></li>
-            <li><a href="/userOptions">Back</a></li>
+            <li><a href="/buyerLogin">Dashboard</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-6"><a href="/user/buyer/all" class="mybtn">Show all Buyers</a></div>
-            <div class="col-6"><a href="" class="mybtn">Place Bid</a></div>
-        </div>
+        <ul class="list-group admin_list">
+            <li class="list-group-item admin_list_head">List of All the Buyers</li>
+            {{#each buyers}}
+            <li class="list-group-item admin_list_item">{{this.name}}</li>
+            {{/each}}
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
