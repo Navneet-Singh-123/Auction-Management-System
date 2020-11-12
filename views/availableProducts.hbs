@@ -20,7 +20,7 @@
         <ul class="list-group admin_list">
             <li class="list-group-item admin_list_head">Available Products</li>
             {{#each products}}
-            <a href="#" class="list-group-item list-group-item-action list_item_selection">{{this.name}}</a>
+            <a href="/product/{{@index}}" class="list-group-item list-group-item-action list_item_selection">{{this.name}}</a>
             {{/each}}
         </ul>
     </div>

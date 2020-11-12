@@ -64,8 +64,18 @@ exports.login = async (req, res)=>{
         }  
 
         db.query("SELECT * FROM admin WHERE email = ?", [email], async(error, results)=>{
-            console.log(results);
-            if(!results || !(await bcrypt.compare(password, results[0].password)) ){
+            if(error){
+                console.log(error);
+                res.status(422).render("adminLogin", {
+                    message: "Something went wrong. Please try Again"
+                })
+            }
+            else if(results.length==0){
+                res.status(401).render("adminLogin", {
+                    message: "An Admin with this Email does not exist. Please Register yourself."
+                })
+            }
+            else if(!results || !(await bcrypt.compare(password, results[0].password)) ){
                 res.status(401).render("adminLogin", {
                     message: "Email or Password is incorrect"
                 })

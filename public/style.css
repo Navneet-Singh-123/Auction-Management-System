@@ -88,3 +88,20 @@ nav li a:hover{
     color: #2A5B97;
     padding-top: 30px;
 }
+
+.index_heading{
+    font-weight: bold;
+    color: #2A5B97;
+}
+
+.index_product_shit{
+    color: #40B6BD;
+    font-weight: bold;
+    font-size:  1.3em;
+}
+
+.index_product{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}

@@ -199,7 +199,7 @@ exports.supplierLogout = async (req, res)=>{
 } 
 
 exports.buyerLogout = async (req, res)=>{
-    res.cookie('jwt_buyer', 'logout', {
+    res.cookie('jwt_buyer', 'logout', { 
         expires: new Date(Date.now() + 2000), 
         httpOnly: true
     })

@@ -25,6 +25,27 @@
         {{/if}}
     </div>
 
+    {{#if toShow}}
+    <div class="container">
+        <div class="jumbotron index_product">
+            <h1 class="display-4 index_heading">Today's Bid!!</h1>
+            <hr class="my-4">
+            <div class="index_product_shit">
+                Product Name:
+                {{#if name}}
+                    {{name}}
+                {{/if}}
+                <br>
+                Base Price:          
+                {{#if price}}
+                    {{price}} Rs
+                {{/if}}
+                
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>
