@@ -14,4 +14,6 @@ router.get('/product/all', userController.getAllProducts);
 
 router.get("/buyer/all", userController.getAllBuyers);
 
+router.post("/buyer/bid", userController.placebid);
+
 module.exports = router;

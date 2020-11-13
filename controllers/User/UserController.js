@@ -9,6 +9,48 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+exports.placebid = (req, res)=>{
+    const curBidPrice = parseInt(req.body.bid);
+    const id = req.cookies.pid;
+    db.query("SELECT * FROM product WHERE id = ?", [id], async (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        const productId = results[0].id;
+        const decoded = await promisify(jwt.verify)(
+            req.cookies.jwt_buyer, 
+            process.env.JWT_SECRET
+        )
+        db.query("SELECT * FROM buyer WHERE id = ?", [decoded.id], (error, result)=>{
+            if(error){
+                console.log(error);
+            }
+            const buyerName = result[0].name;
+            db.query('INSERT INTO bidProduct SET ?', {
+                productId: productId, 
+                buyerName: buyerName, 
+                bidPrice: curBidPrice
+            }, (error, result)=>{
+                if(error){
+                    console.log(error);
+                }
+                else{
+                    db.query("SELECT * FROM bidproduct WHERE productId = ? ORDER BY bidPrice desc",[productId],  (err, ans)=>{
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            res.render("placeBid", {
+                                highest: ans[0]
+                            })
+                        }
+                    })
+                }
+            })
+        })
+    })
+}
+
 exports.getAllSuppliers = (req, res)=>{
     db.query('SELECT * FROM supplier', (error, results)=>{
         if(error){

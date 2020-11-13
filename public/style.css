@@ -123,3 +123,8 @@ nav li a:hover{
     font-size: 1.4em;
     color: #40B6BD;
 }
+
+.bid_input{
+    box-sizing: border-box;
+    outline: none;
+}

@@ -145,5 +145,40 @@ router.get("/product/:idx", (req, res)=>{
 });
 
 
+router.get('/removeProduct', (req, res)=>{
+    res.clearCookie("pid");
+    res.status(200).redirect('/');
+})
+
+router.get("/placeBid", (req, res)=>{
+    if(req.cookies.pid){
+        const id = req.cookies.pid;
+        db.query("SELECT * FROM product WHERE id = ?", [id], (error, results)=>{
+            if(error){
+                console.log(error);
+            }
+            db.query("SELECT * FROM bidproduct WHERE productId = ? ORDER BY bidPrice desc",[id],  (err, ans)=>{
+                if(err){
+                    console.log(err);
+                }
+                else if(ans.length==0){
+                    res.render("placeBid",{
+                        product: results[0], 
+                        none: true
+                    })
+                }
+                else{
+                    res.render("placeBid", {
+                        product: results[0], 
+                        highest: ans[0]
+                    })
+                }
+            })
+        })
+    }
+    else{
+        res.render("placeBid");
+    }
+})
 
 module.exports = router;
