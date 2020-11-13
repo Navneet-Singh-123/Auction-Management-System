@@ -5,4 +5,8 @@ const router = express.Router();
 
 router.get('/all', adminController.getAllAdmins);
 
+router.get('/status', adminController.biddingStatus)
+
+router.get('/confirm/sale', adminController.confirmSale);
+
 module.exports = router;

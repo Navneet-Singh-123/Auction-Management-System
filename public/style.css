@@ -128,3 +128,9 @@ nav li a:hover{
     box-sizing: border-box;
     outline: none;
 }
+
+.status_styles{
+    color: #40B6BD;
+    font-weight: bold;
+    font-size: 1.3em;
+}
