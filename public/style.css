@@ -134,3 +134,8 @@ nav li a:hover{
     font-weight: bold;
     font-size: 1.3em;
 }
+
+.product_detial_item{
+    color: #2A5B97;
+    font-weight: bold;
+}

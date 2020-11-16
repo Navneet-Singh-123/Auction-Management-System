@@ -20,10 +20,30 @@
             {{product.name}}
         </div>
         <div>
+            {{#if product.owner}}
+                <div class="product_details">
+                    <span class="product_detial_item">Supplier Name: </span>{{product.owner}}
+                </div>
+            {{/if}}
+            {{#if product.basePrice}}
+                <div class="product_details">
+                    <span class="product_detial_item">Base Price: </span>{{product.basePrice}} Rs
+                </div>
+            {{/if}}
+            {{#if product.soldAt}}
+                <div class="product_details">
+                    <span class="product_detial_item">Sold At: </span>{{product.soldAt}} Rs
+                </div>
+            {{/if}}
+            {{#if product.buyerName}}
+                <div class="product_details">
+                    <span class="product_detial_item">Buyer Name: </span>{{product.buyerName}}
+                </div>
+            {{/if}}
             {{#if product.detail}}
-            <div class="product_details">
-                {{product.detail}}
-            </div>
+                <div class="product_details">
+                    <span class="product_detial_item">Details: </span>{{product.detail}}
+                </div>
             {{/if}}
         </div>
     </div>

@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
+    <nav> 
         <h4>Auction Management System</h4>
         <ul>
             <li><a href="/">Home</a></li>
@@ -20,7 +20,7 @@
         <ul class="list-group admin_list">
             <li class="list-group-item admin_list_head">Sold Products</li>
             {{#each products}}
-            <li class="list-group-item admin_list_item">{{this.name}}</li>
+            <a href="/productsoldDetail/{{@index}}" class="list-group-item list-group-item-action list_item_selection">{{this.name}}</a>            
             {{/each}}
         </ul>
     </div>

@@ -144,6 +144,19 @@ router.get("/product/:idx", (req, res)=>{
     }) 
 });
 
+router.get("/productsoldDetail/:idx", (req, res)=>{
+    const index = req.params.idx;
+    db.query("SELECT * from product WHERE status = 0", (error, results)=>{
+        if(error){
+            console.log(error);
+        }
+        const soldProduct = results[index];
+        res.render("productDetails", {
+            product: soldProduct
+        })
+    }) 
+})
+
 
 router.get('/removeProduct', (req, res)=>{
     res.clearCookie("pid");
